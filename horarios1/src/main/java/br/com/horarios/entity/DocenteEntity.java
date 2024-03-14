@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 @Entity
-@Table(name = "setor" , schema = "horario")
+@Table(name = "docente" , schema = "horario")
 public class DocenteEntity implements Serializable
 
 {

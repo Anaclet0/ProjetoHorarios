@@ -20,6 +20,18 @@ public class SetorEntity implements Serializable
 	private Long idSetor;
 	@Column(name = "nome")
 	private String nome;
+	public Long getIdSetor() {
+		return idSetor;
+	}
+	public void setIdSetor(Long idSetor) {
+		this.idSetor = idSetor;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	
 	
 	
