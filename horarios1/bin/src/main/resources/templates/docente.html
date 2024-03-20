@@ -14,11 +14,11 @@
 
 	<form name="salvar_docente" class="form-horizontal" method="post" th:action="@{/salvar_docente}"
 		th:object="${docenteEntity}">
-	<div class="container">
+		<div class="container">
 			<h1>Docente</h1>
 
 
-			<!--Começa cadastro de docente-->
+			<!-->Começa cadastro de docente<-->
 			<div class="container">
 				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
 
@@ -34,7 +34,7 @@
 
 				<div class="mb-3">
 					<label for="cpf" class="form-label">Cpf</label>
-					<input type="text" name="cpf" class="form-control" pattern="\d{11}" maxlength="11" minlength="11"
+					<input type="text" class="form-control" pattern="\d{11}" maxlength="11" minlength="11"
 						placeholder="Digite somente números.">
 				</div>
 				<div class="mb-3">
@@ -54,49 +54,9 @@
 					<button type="submit" class="btn btn-success form-control">Salvar</button>
 				</div>
 			</div>
-			<br>
-			<h5 class="card-title">Docente cadastrados</h5>
-				<table class="table table-sm table-striped table-hover table-bodered">
-								<thead>
-									<tr>
-											<th>ID</th>
-											<th>Nome</th>
-											<th>Setor</th>
-											<th>Email</th>
-											<th class="col-1"></th>
-											<th class="col-1"></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="docente : ${docentes}">
-										<td th:text="${docente.IdDocente}"></td>
-										<td th:text="${docente.nome + ' ' + docente.sobrenome}"></td>
-										<td th:text="${docente.setor.nome}"></td>
-										<td th:text="${docente.email}"></td>
-																						
-										<td><a class="btn btn-sm btn-warning" th:href="@{alterar_docente/{idDocente}(idDocente=${docente.IdDocente})}">Alterar</a></td>
-										
-										<td>
-											<a class="delete btn btn-sm btn-danger"
-											th:href="@{excluir_docente/{idDocente}(idDocente=${docente.IdDocente})}"
-											onclick="if (confirm('Deseja realmente excluir o Docente!?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-												Excluir
-											</a>
-											
-										</td>
-										
-										<!--Termina Exclusao-->
-									</tr>
-								</tbody>
-				</table>
-		</div>
-			
-			
-		</form>
-		
 
-			<!--Terminar cadastro de docentes-->
-					
+			<!-->Terminar cadastro de docentes<-->
+
 
 
 

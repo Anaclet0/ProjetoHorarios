@@ -33,12 +33,13 @@ public class DocenteController {
 				
 	}
 	
-	@PostMapping("/salva_docente")
+	@PostMapping("/salvar_docente")
 	public ModelAndView save(
 			ModelMap model,
 			@ModelAttribute("docenteEntity")DocenteEntity docenteEntity,
 			RedirectAttributes atributes) throws Exception
 	{
+		System.out.println("entrei");
 		ModelAndView mv = new ModelAndView("redirect:/docente");
 		atributes.addFlashAttribute("mansagem",docenteService.save(docenteEntity));
 		return mv;
