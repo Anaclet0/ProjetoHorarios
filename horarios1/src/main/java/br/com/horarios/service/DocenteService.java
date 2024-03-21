@@ -9,5 +9,7 @@ public interface DocenteService {
 	String save(DocenteEntity docenteEntity) throws Exception;
 	List<DocenteEntity> findAll();
 	DocenteEntity getOnebyIdDocente(long idDocente) throws Exception;
-
+	//Começa exclusão
+	String deleteById(Long idDocente) throws Exception;
+	//Termina exclusão
 }

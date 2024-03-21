@@ -15,6 +15,7 @@ import br.com.horarios.entity.DocenteEntity;
 import br.com.horarios.service.DocenteService;
 import br.com.horarios.service.SetorService;
 
+
 @Controller
 public class DocenteController {
 	
@@ -57,4 +58,18 @@ public class DocenteController {
 	
 			
 	}
-}
+	//começa Exclusão
+	@GetMapping("/excluir_docente/{idDocente}")
+	public ModelAndView delete(ModelMap model,@PathVariable ("idDocente") Long idDocente,RedirectAttributes atributes) throws Exception 
+	{
+		ModelAndView mv = new ModelAndView("docente");
+		model.addAttribute("setores",setorService.findAll());
+		model.addAttribute("mensagem",docenteService.deleteById(idDocente));
+		//após a exclusão de um docente eu preciso atualizar a listagem na pagina
+		//por isso eu realizo uma nova consulta findall
+		model.addAttribute("docente",docenteService.findAll());
+		
+		return mv;
+	}
+	
+	}
