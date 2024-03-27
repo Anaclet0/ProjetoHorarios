@@ -40,16 +40,16 @@ public class DocenteController {
 			@ModelAttribute("docenteEntity")DocenteEntity docenteEntity,
 			RedirectAttributes atributes) throws Exception
 	{
-		System.out.println("entrei");
 		ModelAndView mv = new ModelAndView("redirect:/docente");
 		atributes.addFlashAttribute("mansagem",docenteService.save(docenteEntity));
+		
 		return mv;
 		
 	}
 	@GetMapping("alterar_docente/{idDocente}")
 	public ModelAndView update(ModelMap model,@PathVariable("idDocente") Long idDocente) throws Exception
 	{
-		ModelAndView mv = new ModelAndView("alterar-docente");
+		ModelAndView mv = new ModelAndView("alterar_docente");
 		model.addAttribute("setores",setorService.findAll());
 		model.addAttribute("idDocente",idDocente);
 		model.addAttribute("docente",docenteService.getOnebyIdDocente(idDocente));
@@ -57,6 +57,18 @@ public class DocenteController {
 		return mv;
 	
 			
+	}
+	@PostMapping("/alterar_docente")
+	public ModelAndView update(
+			ModelMap model,
+			@ModelAttribute("docenteEntity")DocenteEntity docenteEntity,
+			RedirectAttributes atributes) throws Exception
+	{
+		ModelAndView mv = new ModelAndView("redirect:/docente");
+		atributes.addFlashAttribute("mansagem",docenteService.save(docenteEntity));
+		
+		return mv;
+		
 	}
 	//começa Exclusão
 	@GetMapping("/excluir_docente/{idDocente}")
