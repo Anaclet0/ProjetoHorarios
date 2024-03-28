@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+
+	<meta charset="ISO-8859-1">
+	<title>Cursos</title>
+
+</head>
+
+<body>
+
+	<div th:insert="~{layout/menu}"></div>
+
+	<form name="salvar_curso" class="form-horizontal" method="post" th:action="@{/salvar_curso}"
+		th:object="${cursoEntity}">
+		<div class="container">
+			<h1>Cursos</h1>
+
+
+			<!--Começa cadastro de curso-->
+			<div class="container">
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+
+				<div class="mb-3">
+					<label for="nome" class="form-label">Nome</label>
+					<input type="text" class="form-control" id="nome" name="nome" required>
+				</div>
+
+				<div class="mb-3">
+					<button type="submit" class="btn btn-success form-control">Salvar</button>
+				</div>
+			</div>
+			<br>
+			<h5 class="card-title">Cursos cadastrados</h5>
+			<table id="example" class="table table-striped" style="width:100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome Cursos</th>
+						<th class="col-1"></th>
+						<th class="col-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="curso : ${cursos}">
+						<td th:text="${curso.IdCurso}"></td>
+						<td th:text="${curso.nome}"></td>
+
+
+						<td><a class="btn btn-sm btn-warning"
+								th:href="@{alterar_curso/{idCurso}(idCurso=${curso.IdCurso})}">Alterar</a></td>
+
+						<td>
+							<a class="delete btn btn-sm btn-danger"
+								th:href="@{excluir_curso/{idCurso}(idCurso=${curso.IdCurso})}"
+								onclick="if (confirm('Deseja realmente excluir o Curso!?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+								Excluir
+							</a>
+
+						</td>
+
+						<!--Termina Exclusao-->
+					</tr>
+				</tbody>
+			</table>
+			<script>
+				new DataTable('#example', {
+					layout: {
+						topStart: {
+							buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+						},
+						language: {
+							url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/pt-BR.json',
+						},
+
+					}
+				});
+			</script>
+		</div>
+
+
+	</form>
+
+
+	<!--Terminar cadastro de docentes-->
+
+
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+
+</body>
+
+</html>
