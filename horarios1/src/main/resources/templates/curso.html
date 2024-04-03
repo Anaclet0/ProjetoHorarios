@@ -66,14 +66,18 @@
 			</table>
 			<script>
 				new DataTable('#example', {
+					language: {
+						url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/pt-BR.json',
+					},
 					layout: {
 						topStart: {
-							buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-						},
-						language: {
-							url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/pt-BR.json',
-						},
-
+							buttons: [
+								{
+									extend: 'csv',
+									split: ['pdf', 'excel', 'print']
+								}
+							]
+						}
 					}
 				});
 			</script>
