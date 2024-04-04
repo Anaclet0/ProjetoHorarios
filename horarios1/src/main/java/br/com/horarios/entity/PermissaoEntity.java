@@ -23,7 +23,7 @@ public class PermissaoEntity implements Serializable,GrantedAuthority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_permissao")
-	private Long idPermissao;
+	private Long id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -31,18 +31,21 @@ public class PermissaoEntity implements Serializable,GrantedAuthority {
 	@ManyToMany(mappedBy = "permissoes")
 	private List<UsuarioEntity> usuarios;
 
-	@Override
-	public String getAuthority() {
-		// TODO Auto-generated method stub
-		return null;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public Long getIdPermissao() {
-		return idPermissao;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public List<UsuarioEntity> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setIdPermissao(Long idPermissao) {
-		this.idPermissao = idPermissao;
+	public void setUsuarios(List<UsuarioEntity> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public String getNome() {
@@ -53,12 +56,12 @@ public class PermissaoEntity implements Serializable,GrantedAuthority {
 		this.nome = nome;
 	}
 
-	public List<UsuarioEntity> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<UsuarioEntity> usuarios) {
-		this.usuarios = usuarios;
+	
+	
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return this.nome;
 	}
 	
 }
