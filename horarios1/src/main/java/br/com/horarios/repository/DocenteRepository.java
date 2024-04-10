@@ -31,4 +31,17 @@ public interface DocenteRepository extends JpaRepository<DocenteEntity, Long> {
 						@Param("cpf") String cpf,
 						@Param("email") String email, 
 						@Param("setor_id") Long id);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "update horario.docente " 
+	+ "set nome = ?1,"
+	+ "sobrenome = ?2," 
+	+ "cpf = ?3," 
+	+ "email + ?4," 
+	+ "setor_id + ?5" 
+	+ "where id_docente", nativeQuery = true)
+	
+	void alterarDocente(String nome, String sobrenome, String cpf, String email,Long setorId,Long idDocente);
+	
 }

@@ -12,4 +12,6 @@ public interface DocenteService {
 	//Começa exclusão
 	String deleteById(Long idDocente) throws Exception;
 	//Termina exclusão
+	//UPDATE
+	String update(DocenteEntity docenteEntity) throws Exception;
 }
