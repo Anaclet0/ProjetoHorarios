@@ -33,7 +33,11 @@ public class DocenteServiceImpl implements DocenteService {
 		}
 		else
 		{
-			docenteRepository.saveAndFlush(docenteEntity);
+			docenteRepository.incluirDocente(docenteEntity.getNome(),
+											 docenteEntity.getSobrenome(),
+											 docenteEntity.getCpf(),
+											 docenteEntity.getEmail(),
+											 docenteEntity.getSetor().getIdSetor());
 			this.mensagem ="Docente Cadastrado com Sucesso";
 		}
 		return mensagem;
@@ -43,7 +47,7 @@ public class DocenteServiceImpl implements DocenteService {
 	@Override
 	public List<DocenteEntity> findAll() {
 		
-		return docenteRepository.findAll();
+		return docenteRepository.listarDocentes();
 	}
 
 	@Override
@@ -56,7 +60,7 @@ public class DocenteServiceImpl implements DocenteService {
 	public String deleteById(Long idDocente) throws Exception {
 		try
 		{
-			docenteRepository.deleteById(idDocente);
+			docenteRepository.excluirDocente(idDocente);
 			this.mensagem = "Docente excluído com sucesso.";
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
